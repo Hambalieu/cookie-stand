@@ -1,0 +1,20 @@
+* {
+  font-family:Arial, Helvetica, sans-serif;
+}
+h2 {
+  margin-left: 40px;
+  margin-top: 40px;
+}
+ul {
+  margin: 50px;
+  margin-top: 15px;
+  list-style-type:circle;
+}
+
+li:first-child{
+  margin-top: 15px;
+}
+
+li:last-child{
+  margin-top: 15px;
+}
