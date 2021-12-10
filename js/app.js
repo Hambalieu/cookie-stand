@@ -57,12 +57,35 @@ thead.appendChild(tr);
 let th = document.createElement('th');
 th.textContent = '';
 tr.appendChild(th);
-
-for (let i = 0; i < hours.length; i++) {
-  let th = document.createElement('th');
-  th.textContent = `${hours[i]}`;
+function tableHeader(){
+  //const table = document.getElementById('table');
+  table.appendChild(tr);
+  th.textContent = 'Stores';
   tr.appendChild(th);
+  for (let i = 0; i < hours.length; i++) {
+    let th = document.createElement('th');
+    th.textContent = `${hours[i]}`;
+    tr.appendChild(th);
+  }
 }
+function tableBody(stores){
+  const table = document.getElementById('table');
+  const tr = document.createElement('tr');
+  table.appendChild(tr);
+  const td = document.createElement('td');
+  td.textContent = stores.name;
+  tr.appendChild(td);
+  for (let i = 0; i < stores.cookiesSalesPerHour.length; i++) {
+    let td = document.createElement('td');
+    td.textContent = `${stores.cookiesSalesPerHour[i]}`;
+    tr.appendChild(td);
+
+  }
+  let td1 = document.createElement('td');
+  td.textContent = `${stores.dailyTotal}`;
+  tr.appendChild(td1);
+}
+
 th = document.createElement('th');
 th.setAttribute('class', 'dlt');
 th.textContent = 'Daily Location Total';
@@ -103,6 +126,7 @@ td.textContent = 'Totals per hour';
 tr.appendChild(td);
 
 td = document.createElement('td');
+
 function dailyTotal(){
   let dailyTotal = 0;
   for (let i = 0; i < hours.length; i++) {
@@ -123,3 +147,50 @@ function dailyTotal(){
 dailyTotal();
 
 //console.log(hourlyTotals);
+
+function renderAllStores(){
+  const table = document.getElementById('table');
+  table.innerHTML = '';
+  tableHeader();
+  for(let i=0;i<stores.length;i++){
+    tableBody(stores[i]);
+  }
+  dailyTotal();
+}
+
+
+
+//////////////////////////////////////////////////////////
+
+
+function submitHandler(event) {
+  event.preventDefault();
+
+  let location = event.target.location.value;
+  let min = parseInt(event.target.min.value);
+  let max = parseInt(event.target.max.value);
+  let avg = parseFloat(event.target.avg.value);
+
+  let newShop = new Location(location, min, max, avg);
+  //console.log(newShop);
+  //newShop.render();
+  newShop.avgCookiesPerSale();
+  newShop.dailyTotal();
+  newShop.cookiesSalesPerHour();
+  //location.push(newShop);
+  console.log(stores[5]);
+  renderAllStores();
+  event.target.reset();
+  //location.push(newShop);CookiesShopForm
+  // dataRowFunction(table);
+  // console.log(newShop);
+  //table.removeChild(dailyTotal);
+
+  // dataRowFunction();
+
+  //dailyTotal();
+
+
+}
+let locationForm = document.getElementById('CookiesShopsForm'); //with html
+locationForm.addEventListener('submit', submitHandler);

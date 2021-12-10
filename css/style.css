@@ -1,11 +1,19 @@
 * {
   font-family:Arial, Helvetica, sans-serif;
   background-color: bisque;
+  font-style: Georgia;
 }
 h1 {
   text-align: center;
   font-size: 3em;
   font-family: 'Cookie', cursive;
+  
+}
+
+nav a {
+  text-decoration: none;
+  color:#111;
+  padding: 30px;
   
 }
 
@@ -24,7 +32,7 @@ h2 {
 ul {
   margin: 50px;
   margin-top: 15px;
-  list-style-type:circle;
+  /* list-style-type:circle; */
 }
 
 li:first-child{
