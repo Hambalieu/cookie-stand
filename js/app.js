@@ -181,7 +181,7 @@ function submitHandler(event) {
   console.log(stores[5]);
   renderAllStores();
   event.target.reset();
-  //location.push(newShop);CookiesShopForm
+  //location.push(newShop);
   // dataRowFunction(table);
   // console.log(newShop);
   //table.removeChild(dailyTotal);
